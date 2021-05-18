@@ -1,7 +1,6 @@
 from mongoengine import *
 # from .config import DB_HOST
 DB_HOST = "mongodb+srv://admin:<password>@cluster0.3vpqs.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
-
 connect(host=DB_HOST)
 
 
@@ -13,9 +12,20 @@ class user(Document):
     second_name = StringField(max_length=100)
     not_hashed_password = StringField()
 
+    valid_token = StringField()
 
-class pet(Document):
-    my_id = IntField(primary_key=True, required=True)
-    name = StringField(required=True)
+    list_id = IntField()
+
+class jest(Document):
+    my_id = IntField(primary_key=True)
+    name = StringField()
     description = StringField()
-    iterations = ListField(IntField(), required=True)
+    # iterations = ListField(IntField())
+    # progress_type = IntField()
+
+class jest_list(Document):
+    my_id = IntField()
+    login = StringField()
+
+    jest_info = DictField()
+    data = ListField(IntField())

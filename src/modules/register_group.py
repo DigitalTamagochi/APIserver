@@ -2,6 +2,8 @@ from flask import Blueprint, request, jsonify
 # from bcrypt import hashpw
 # from ..config import SALT
 from ..models import user
+from ..models import jest
+from ..models import jest_list
 
 
 registerApp = Blueprint('register', __name__)
@@ -19,21 +21,27 @@ def register_api():
 
     last_id = len(user.objects) + 1
 
-    print("LAST ID:", last_id)
-    print(last_id, login, password, email, first_name, second_name)
+    # print("LAST ID:", last_id)
+    # print(last_id, login, password, email, first_name, second_name)
+    existing_user = user.objects(login=login).first()
+    if existing_user is None:
 
-    new_user = user(my_id=last_id,
-            login=login,
-            email=email,
-            first_name=first_name,
-            second_name=second_name,
-            not_hashed_password=password)
+        new_user = user(my_id=last_id + 1,
+                login=login,
+                email=email,
+                first_name=first_name,
+                valid_token="",
+                second_name=second_name,
+                not_hashed_password=password,
+                list_id=last_id + 1).save()
 
-    new_user.save()
 
+        new_jest_list = jest_list(
+                my_id=new_user.my_id,
+                login=login,
+                data=[],
+                jest_info={}).save()
 
-    # print(login, password)
-    if len(user.objects) + 1 == last_id:
-        return jsonify({"FAIL":True, "REGISTRATION_SUCCEED":False})
-    else:
         return jsonify({"FAIL":False, "REGISTRATION_SUCCEED":True})
+    else:
+        return jsonify({"FAIL":True, "REGISTRATION_SUCCEED":False, "MSG":"User already exists"})

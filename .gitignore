@@ -139,4 +139,5 @@ cython_debug/
 
 
 # My ignor
-src/config.py
+src/config.p
+*.DS*

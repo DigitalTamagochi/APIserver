@@ -6,4 +6,4 @@ mainPage = Blueprint('mainPage', __name__)
 
 @mainPage.route('/', methods=['POST', 'GET'])
 def main_page():
-    return "<h1>Welcome to API server !!</h1>"
+    return "<h1>Welcome, human! =)</h1>"
