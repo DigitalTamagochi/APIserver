@@ -1,6 +1,6 @@
 from mongoengine import *
 # from .config import DB_HOST
-DB_HOST = "mongodb+srv://admin:<password>@cluster0.3vpqs.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+DB_HOST = "mongodb+srv://admin:GvCajyHU4BdLcAuB@cluster0.3vpqs.mongodb.net/total_records?retryWrites=true&w=majority"
 connect(host=DB_HOST)
 
 
