@@ -1,7 +1,7 @@
 from .init import app
 # from .config import FLASK_PORT, FLASK_DEBUG
 
-DB_HOST = "mongodb+srv://admin:<password>@cluster0.3vpqs.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+DB_HOST = "mongodb+srv://admin:GvCajyHU4BdLcAuB@cluster0.3vpqs.mongodb.net/total_records?retryWrites=true&w=majority"
 FLASK_PORT = 8000
 FLASK_DEBUG = True
 SALT = b'$2b$12$IXLidDjhFEVpIIhSZoMp/.'
